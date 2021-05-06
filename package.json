@@ -1,0 +1,29 @@
+{
+  "name": "animality",
+  "version": "1.2.5",
+  "description": "A simple API wrapper that generates images & facts of any animal",
+  "main": "index.js",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VeryHamburger/Animality"
+  },
+  "keywords": [
+    "animal",
+    "api",
+    "random",
+    "random-api"
+  ],
+  "author": "Hamburger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VeryHamburger/Animality/issues"
+  },
+  "homepage": "https://github.com/VeryHamburger/Animality#readme"
+}
