@@ -1,6 +1,6 @@
 # animality
 
-Easy to use random animal api. Get facts and images of numerous animals!
+A simple API wrapper that generates images & facts of any animal
 
 ## Installation
 
