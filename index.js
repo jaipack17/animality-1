@@ -1,61 +1,48 @@
-const fetch = require("node-fetch")
+const fetch = require('node-fetch');
+const animals = [
+  'cat',
+  'dog',
+  'bird',
+  'panda',
+  'redpanda',
+  'koala',
+  'fox',
+  'whale',
+  'kangaroo',
+  'bunny'
+];
+const base = 'https://random-api.nitcord.repl.co/api';
 
-let animals = ["cat", "dog", "bird", "panda", "redpanda", "koala", "fox", "whale", "kangaroo", "bunny"]
+/**
+ * @typedef {Object} AnimalObject
+ * @property {string} name
+ * @property {string} image
+ * @property {string} fact
+ */
 
 module.exports = {
-  getAsync : async function(type){
-    if(!type) throw new TypeError("No arguments provided!")
-    if(typeof type != "string" && typeof type != "object") throw new TypeError("Invalid type of arguments! Arguments must be a string or an array!")
-    let img = `https://random-api.nitcord.repl.co/api/img/${type}`
-    let fact = `https://random-api.nitcord.repl.co/api/facts/${type}`
-    if(typeof type == "object"){
-      let data = []
-      let filteredType = type.filter(function(item, pos){
-        return type.indexOf(item) == pos;
-      })
-      for(var i = 0; i < filteredType.length; i++){
-        if(animals.includes(filteredType[i].toLowerCase())){
-          img = `https://random-api.nitcord.repl.co/api/img/${filteredType[i]}`
-          fact = `https://random-api.nitcord.repl.co/api/facts/${filteredType[i]}`
-          const imgData = await fetch(img).then(lang => lang.json())
-          const factData = await fetch(fact).then(lang => lang.json())
-          let object = {}
-          object["name"] = filteredType[i].toLowerCase()
-          object["image"] = imgData.link
-          object["fact"] = factData.fact
-          data[i] = object
-        } else{
-          throw new TypeError("Invalid argument! Invalid Animal Name Found in the object!")
-        }
-      }
-      return data
-    }
-    if(type.toLowerCase() == "random"){
-      let random = animals[Math.floor(Math.random() * animals.length)]
-      img = `https://random-api.nitcord.repl.co/api/img/${random}`
-      fact = `https://random-api.nitcord.repl.co/api/facts/${random}`
-      const imgData = await fetch(img).then(lang => lang.json())
-      const factData = await fetch(fact).then(lang => lang.json())
+  /**
+   * Returns an image and a fact of the specified animal type(s).
+   * @param {string | string[]} [type='random'] The animal type(s).
+   * @returns {AnimalObject | AnimalObject[]} The image and fact object.
+   */
+  async getAsync(type = 'random') {
+    const isArray = Array.isArray(type);
+    if (typeof type !== 'string' && !isArray && (type = type.flat()) && !type.every(t => typeof t === 'string')) throw new TypeError("'type' must be a string or an array of strings");
+    
+    type = type === 'random' ? animals[Math.floor(Math.random() * animals.length)] : !isArray ? type.toLowerCase() : [...new Set(type.map(t => t.toLowerCase()))];
+    
+    if (!isArray && !animals.includes(type)) throw new TypeError(`'${type}' is not a valid type, the valid types are: ${animals.join(', ')}, random`);
+ 
+    if (isArray) return Promise.all(type.map(t => this.getAsync(t)));
 
-      const data = {}
-      data["name"] = random
-      data["image"] = imgData.link
-      data["fact"] = factData.fact
+    const [{ link: image }, { fact }] = await Promise.all([
+      fetch(`${base}/img/${type}`).then(res => res.json()),
+      fetch(`${base}/fact/${type}`).then(res => res.json())
+    ]).catch(err => {
+      throw new Error(`Failed to get type '${type}' from API, error:\n${err}`);
+    });
 
-      return data;
-    }
-    if(animals.includes(type.toLowerCase())){
-      const imgData = await fetch(img).then(lang => lang.json())
-      const factData = await fetch(fact).then(lang => lang.json())
-
-      const data = {}
-      data["name"] = type.toLowerCase()
-      data["image"] = imgData.link
-      data["fact"] = factData.fact
-
-      return data;
-    } else{
-      throw new TypeError("Invalid Arguments found! Please enter a valid animal as the type!")
-    }
+    return { name: type, image, fact };
   }
-}
+};
