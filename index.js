@@ -10,14 +10,17 @@ module.exports = {
     let fact = `https://random-api.nitcord.repl.co/api/facts/${type}`
     if(typeof type == "object"){
       let data = []
-      for(var i = 0; i < type.length; i++){
-        if(animals.includes(type[i])){
-          img = `https://random-api.nitcord.repl.co/api/img/${type[i]}`
-          fact = `https://random-api.nitcord.repl.co/api/facts/${type[i]}`
+      let filteredType = type.filter(function(item, pos){
+        return type.indexOf(item) == pos;
+      })
+      for(var i = 0; i < filteredType.length; i++){
+        if(animals.includes(filteredType[i].toLowerCase())){
+          img = `https://random-api.nitcord.repl.co/api/img/${filteredType[i]}`
+          fact = `https://random-api.nitcord.repl.co/api/facts/${filteredType[i]}`
           const imgData = await fetch(img).then(lang => lang.json())
           const factData = await fetch(fact).then(lang => lang.json())
           let object = {}
-          object["name"] = type[i]
+          object["name"] = filteredType[i].toLowerCase()
           object["image"] = imgData.link
           object["fact"] = factData.fact
           data[i] = object
@@ -27,7 +30,7 @@ module.exports = {
       }
       return data
     }
-    if(type == "random"){
+    if(type.toLowerCase() == "random"){
       let random = animals[Math.floor(Math.random() * animals.length)]
       img = `https://random-api.nitcord.repl.co/api/img/${random}`
       fact = `https://random-api.nitcord.repl.co/api/facts/${random}`
@@ -41,12 +44,12 @@ module.exports = {
 
       return data;
     }
-    if(animals.includes(type)){
+    if(animals.includes(type.toLowerCase())){
       const imgData = await fetch(img).then(lang => lang.json())
       const factData = await fetch(fact).then(lang => lang.json())
 
       const data = {}
-      data["name"] = type
+      data["name"] = type.toLowerCase()
       data["image"] = imgData.link
       data["fact"] = factData.fact
 
