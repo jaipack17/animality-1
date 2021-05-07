@@ -5,7 +5,7 @@ declare module 'animality' {
     fact: string;
   }
   
-  declare namespace fns {
+  namespace fns {
     export function getAsync(type?: string | string[]): Promise<AnimalObject | AnimalObject[]>;
   }
   
