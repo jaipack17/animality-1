@@ -28,7 +28,7 @@ module.exports = {
    */
   async getAsync(type = 'random') {
     const isArray = Array.isArray(type);
-    if (typeof type !== 'string' && !isArray && (type = type.flat()) && !type.every(t => typeof t === 'string')) throw new TypeError("'type' must be a string or an array of strings");
+    if ((typeof type !== 'string' && !isArray) || isArray && (type = type.flat()) && !type.every(t => typeof t === 'string')) throw new TypeError("'type' must be a string or an array of strings");
     
     type = type === 'random' ? animals[Math.floor(Math.random() * animals.length)] : !isArray ? type.toLowerCase() : [...new Set(type.map(t => t.toLowerCase()))];
     
