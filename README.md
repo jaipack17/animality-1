@@ -2,7 +2,7 @@
 
 A simple API wrapper that generates images & facts of any animal
 
-## Installation
+# Installation
 
 Use the package manager [npm](https://www.npmjs.com/) to install `animality`.
 
