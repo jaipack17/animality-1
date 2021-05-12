@@ -38,7 +38,7 @@ module.exports = {
 
     const [{ link: image }, { fact }] = await Promise.all([
       fetch(`${base}/img/${type}`).then(res => res.json()),
-      fetch(`${base}/facts/${type}`).then(res => res.json())
+      fetch(`${base}/fact/${type}`).then(res => res.json())
     ]).catch(err => {
       throw new Error(`Failed to get type '${type}' from API, error:\n${err}`);
     });
