@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/VeryHamburger/animality"
+    "url": "https://github.com/animal-api/animality"
   },
   "keywords": [
     "animal",
@@ -23,7 +23,7 @@
   "author": "Hamburger",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/VeryHamburger/animality/issues"
+    "url": "https://github.com/animal-api/animality/issues"
   },
-  "homepage": "https://github.com/VeryHamburger/animality#readme"
+  "homepage": "https://github.com/animal-api/animality#readme"
 }
