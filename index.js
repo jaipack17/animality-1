@@ -11,7 +11,7 @@ const animals = [
   'kangaroo',
   'bunny'
 ];
-const base = 'https://animal-api.nitcord.repl.co/api';
+const base = 'https://api.animality.xyz/';
 
 /**
  * @typedef {Object} AnimalObject
