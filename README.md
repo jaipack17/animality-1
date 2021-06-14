@@ -29,6 +29,11 @@ const animality = require('animality');
 * `whale` 
 * `kangaroo` 
 * `bunny`
+* `lion`
+* `bear`
+* `frog`
+* `duck`
+* `penguin`
 
 ## Get one or multiple animal images and facts
 
