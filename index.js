@@ -1,21 +1,5 @@
-const fetch = require('node-fetch');
-const animals = [
-  'cat',
-  'dog',
-  'bird',
-  'panda',
-  'redpanda',
-  'koala',
-  'fox',
-  'whale',
-  'kangaroo',
-  'bunny',
-  'lion',
-  'bear',
-  'frog',
-  'duck',
-  'penguin'
-];
+const axios = require("axios")
+
 const base = 'https://api.animality.xyz';
 
 /**
