@@ -14,13 +14,13 @@ A simple API wrapper that generates images & facts of any animal
 
 # Installation
 
-Use the package manager [npm](https://www.npmjs.com/) to install `animality`.
+Use the package manager [npm](https://www.npmjs.com/) to install [animality](https://www.npmjs.com/package/animality).
 
-```bash
-$ npm i animality
+```sh-session
+npm install animality
 ```
 
-# Require
+# Initialization
 
 ```js
 const animality = require('animality');
