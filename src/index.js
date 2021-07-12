@@ -24,12 +24,25 @@ module.exports = {
  
     if (isArray) return Promise.all(type.map(t => this.getAsync(t)));
 
-    try {
-        axios.all([axios.get(`${base}/img/${type}`), axios.get(`${base}/fact/${type}`)]).then((res) => {
-            return { name: type, image: res[0].data.link, fact: res[1].data.fact }
-        })
-    } catch(err) {
-        throw new Error(`Failed to get type '${type}' from API.\n${err}`);
+    const [image, fact] = await Promise.all([
+        axios({
+            method: 'get',
+            url: `${base}/img/${type}`,
+            responseType: 'json'
+        }),
+        axios({
+            method: 'get',
+            url: `${base}/fact/${type}`,
+            responseType: 'json'
+        }),    
+    ]).catch(err => {
+        throw new Error(`Failed to get type '${type}' from API, error:\n${err}`);
+    });
+    
+    return { 
+        name: type, 
+        image: image.data.link, 
+        fact: fact.data.fact
     }
   }
 };
