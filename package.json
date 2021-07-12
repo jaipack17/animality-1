@@ -2,14 +2,11 @@
   "name": "animality",
   "version": "1.0.0",
   "description": "A simple API wrapper that generates images & facts of any animal",
-  "main": "index.js",
+  "main": "src/index.js",
   "dependencies": {
-    "node-fetch": "^2.6.1"
+     "axios": "^0.21.1"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/animality-xyz/animality"
@@ -18,7 +15,12 @@
     "animal",
     "api",
     "random",
-    "random-api"
+    "random-api",
+    "animals",
+    "images",
+    "facts",
+    "rest-api",
+    "express-api",
   ],
   "author": "Hamburger",
   "license": "MIT",
