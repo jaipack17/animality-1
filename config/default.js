@@ -16,4 +16,4 @@ module.exports.animals = [
   'penguin'
 ];
 
-module.exports.base = 
+module.exports.base = 'https://api.animality.xyz';
