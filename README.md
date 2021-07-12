@@ -1,7 +1,7 @@
 <div align="center">  
 <br />
   <p>
-    <a href="https://www.npmjs.com/package/ruxe"><img style="margin-top: -4%" src="https://raw.githubusercontent.com/jaipack17/animality-1/main/assets/cold__smooth___tasty.-removebg-preview.png" width="546" alt="animality" /></a>
+    <a href="https://www.npmjs.com/package/ruxe"><img style="margin-top: -4%" src="https://raw.githubusercontent.com/jaipack17/animality-1/main/assets/logo.png" width="546" alt="animality" /></a>
   </p>
   <br />
   <p>
