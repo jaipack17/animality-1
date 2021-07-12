@@ -29,7 +29,7 @@ const animality = require('animality');
 # Usage
 
 ### Animals: 
-* `cat`
++ `cat`
 * `dog` 
 * `bird` 
 * `panda` 
