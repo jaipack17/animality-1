@@ -1,4 +1,14 @@
-# animality
+<div align="center">  
+<br />
+  <p>
+    <a href="https://www.npmjs.com/package/ruxe"><img style="margin-top: -4%" src="https://raw.githubusercontent.com/jaipack17/animality-1/main/assets/cold__smooth___tasty.-removebg-preview.png" width="546" alt="animality" /></a>
+  </p>
+  <br />
+  <p>
+    <a href="https://www.npmjs.com/package/animality"><img src="https://img.shields.io/npm/v/animality.svg?maxAge=3600" alt="NPM version" /></a>
+    <a href="https://www.npmjs.com/package/animality"><img src="https://img.shields.io/npm/dt/animality.svg?maxAge=3600" alt="NPM downloads" /></a>
+  </p>
+</div>
 
 A simple API wrapper that generates images & facts of any animal
 
