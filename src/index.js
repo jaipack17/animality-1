@@ -1,7 +1,5 @@
 const axios = require("axios")
 
-const base = 'https://api.animality.xyz';
-
 /**
  * @typedef {Object} AnimalObject
  * @property {string} name
