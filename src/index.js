@@ -1,4 +1,5 @@
-const axios = require("axios")
+const axios = require("axios");
+const { animals, base } = require("../config/default.js");
 
 /**
  * @typedef {Object} AnimalObject
@@ -23,13 +24,12 @@ module.exports = {
  
     if (isArray) return Promise.all(type.map(t => this.getAsync(t)));
 
-    const [{ link: image }, { fact }] = await Promise.all([
-      fetch(`${base}/img/${type}`).then(res => res.json()),
-      fetch(`${base}/fact/${type}`).then(res => res.json())
-    ]).catch(err => {
-      throw new Error(`Failed to get type '${type}' from API, error:\n${err}`);
-    });
-
-    return { name: type, image, fact };
+    try {
+        axios.all([axios.get(`${base}/img/${type}`), axios.get(`${base}/fact/${type}`)]).then((res) => {
+            return { name: type, image: res[0].data.link, fact: res[1].data.fact }
+        })
+    } catch(err) {
+        throw new Error(`Failed to get type '${type}' from API.\n${err}`);
+    }
   }
 };
